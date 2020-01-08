@@ -6,13 +6,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
         <style>
+			body{
+				background-image: url(images/2.jpeg);
+			}
             .title {
                 font-weight: bold;
                 font-size: 18px;
                 padding: 15px;
             }
             .btn-group {
-                padding: 15px;
+               padding: 10px;
             }
             .modal {
                 width: 200px;
@@ -24,7 +27,8 @@
 			#i{
 				width: 50%;
                 height: 500px;
-                border: 3px solid #000000;
+				font-size: 14px;
+				border: 2px solid #6B78BF;
                 padding: 20px;
 				margin-right: 50px;
 				float: right;
@@ -32,6 +36,27 @@
 			section{
 				float: left;
 			}
+			.bao{
+				float: left;
+				border:  2px solid #31398F;
+				text-align: center;
+			}
+			.bao>a{
+				text-decoration: none;
+				color: #112643;
+			}
+			button{
+ margin: 5px;
+ border: 0;
+ width: 70px;
+ height: 35px;
+ background: #6B78BF;
+ color: white;
+ font-size: 14px;
+ font-family: "微软雅黑";
+ cursor: pointer;
+}
+
         </style>
     </head>
     <body>
@@ -39,13 +64,14 @@
         <section>
             <div class="title">提示：您选择了订阅模式之后将固定。<br>
 							可以点击“查看按钮”，知晓所在的订阅状态。<br>
-							如果您想修改，点击选择重新决定！</div>
-            
+							如果您想修改，点击选择重新决定！ <br>   <br>        
+				<div class="bao"><a href="choosesubject.html">进入科目了解系统</a></div>
+            </div>
+			<br>
             <div class="btn-group">
                 <button>选择</button>
                 <button>查看</button>
-                <input type="button" value="提交" onClick="observe()"/>
-                
+				<button onClick="observe()">提交</button>               
             </div>
         </section>
 <!--提交触发观察者-->
@@ -63,37 +89,8 @@
 				}
 			}
 		</script>
-<!-- 单例模式具体表现-->
-        <script>
-            var ModalSingle = function () {
-                var div
-                return function (title) {
-                    if(div) {
-                        div.style.display = 'none'
-                        div.children[0].innerText = title
-                    } else {
-                        div = document.createElement('div')
-                        div.className = 'modal'
-                        div.innerHTML = '<div>'+title+'</div><input id="k" placeholder="格式为：长期&一次&离线"/>'
-                        div.style.display = 'none'
-                        document.body.appendChild(div)
-                    }
-                    return div
-                }
-            }
-
-            var modal = ModalSingle()
-            document.getElementsByTagName('button')[0].onclick = function () {
-                var modalEle = modal('输入您想要订阅的方式：')
-                modalEle.style.display = 'block'
-            }
-            document.getElementsByTagName('button')[1].onclick = function () {
-                var modalEle = modal('您当前的订阅状态为：')
-                modalEle.style.display = 'block'
-            }
-        </script>
+<script src="js/single.js"></script>
         
         <iframe src="" name="main" id="i"></iframe>
-
     </body>
 </html>
